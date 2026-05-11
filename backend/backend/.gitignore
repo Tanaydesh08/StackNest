@@ -17,6 +17,11 @@ target/
 .idea
 *.iws
 *.iml
+.mvn
+HELP.md
+
+application.properties
+.DS_Store
 *.ipr
 
 ### NetBeans ###
