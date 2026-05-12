@@ -23,6 +23,13 @@ public class JwtUtil {
                 .compact();
     }
 
+    public String extractTokenFromHeader(String header){
+        if (header != null && header.startsWith("Bearer ")){
+            return header.substring(7);
+        }
+        return null;
+    }
+
     public String extractEmail(String token){
         return Jwts.parser()
                 .verifyWith((javax.crypto.SecretKey) key)
