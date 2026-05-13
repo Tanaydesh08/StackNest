@@ -21,7 +21,10 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/auth/**",
                                 "/api/communities",
-                                "/api/communities/*"
+                                "/api/communities/*",
+                                "/api/posts",
+                                "/api/posts/*",
+                                "/api/posts/community/*"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
