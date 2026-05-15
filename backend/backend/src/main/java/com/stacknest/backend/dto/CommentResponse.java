@@ -7,14 +7,10 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class PostResponse {
+public class CommentResponse {
     private Long id;
-    private String title;
     private String content;
-    private String imageUrl;
     private String authorUsername;
-    private String communityName;
-    private String communitySlug;
-    private Integer voteCount;
+    private Long postId;
     private LocalDateTime createdAt;
 }

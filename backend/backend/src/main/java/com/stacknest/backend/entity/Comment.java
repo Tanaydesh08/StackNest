@@ -3,6 +3,8 @@ package com.stacknest.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -17,9 +19,13 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    private LocalDateTime createdAt;
+
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User author;
 
     @ManyToOne
+    @JoinColumn(name = "post_id")
     private Post post;
 }

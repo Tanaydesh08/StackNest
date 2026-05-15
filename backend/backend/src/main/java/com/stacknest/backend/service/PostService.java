@@ -5,9 +5,11 @@ import com.stacknest.backend.dto.PostResponse;
 import com.stacknest.backend.entity.Community;
 import com.stacknest.backend.entity.Post;
 import com.stacknest.backend.entity.User;
+import com.stacknest.backend.entity.Vote;
 import com.stacknest.backend.repository.CommunityRepository;
 import com.stacknest.backend.repository.PostRepository;
 import com.stacknest.backend.repository.UserRepository;
+import com.stacknest.backend.repository.VoteRepository;
 import com.stacknest.backend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class PostService {
     private final UserRepository userRepository;
     private final CommunityRepository communityRepository;
     private final JwtUtil jwtUtil;
+    private final VoteRepository voteRepository;
 
     public PostResponse createPost(PostRequest request, String authHeader){
         String token = jwtUtil.extractTokenFromHeader(authHeader);
@@ -67,6 +70,12 @@ public class PostService {
                 .toList();
     }
     private PostResponse mapToResponse(Post post){
+
+        Integer voteCount = voteRepository.findByPost(post)
+                .stream()
+                .mapToInt(Vote::getValue)
+                .sum();
+
         return PostResponse.builder()
                 .id(post.getId())
                 .title(post.getTitle())
