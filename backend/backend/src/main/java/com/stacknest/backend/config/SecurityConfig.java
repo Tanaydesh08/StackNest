@@ -27,7 +27,8 @@ public class SecurityConfig {
                                 "/api/posts/community/*",
                                 "/api/votes/**",
                                 "/api/comments",
-                                "/api/comments/post/*"
+                                "/api/comments/post/*",
+                                "/api/upload"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
