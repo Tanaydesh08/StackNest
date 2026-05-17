@@ -84,6 +84,7 @@ public class PostService {
                 .authorUsername(post.getAuthor().getUsername())
                 .communityName(post.getCommunity().getName())
                 .communitySlug(post.getCommunity().getSlug())
+                .voteCount(voteCount)
                 .createdAt(post.getCreatedAt())
                 .build();
     }
